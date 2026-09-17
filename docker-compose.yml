@@ -1,0 +1,16 @@
+services:
+  app:
+    build: .
+    env_file:
+      - .env
+    ports:
+      - "8501:8501"  # Map the container's port to your local machine
+    environment:
+      - PYTHONUNBUFFERED=1
+    volumes:
+      - .:/app  # Mount the current directory to the container
+    networks:
+      - app-network
+networks:
+  app-network:
+    driver: bridge
